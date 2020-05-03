@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/news_item"
+    android:layout_marginTop="@dimen/standardMargin_X2"
+    android:layout_marginStart="@dimen/standardMargin"
+    android:layout_marginEnd="@dimen/standardMargin"
+    app:contentPadding="0dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardCornerRadius="@dimen/standardMargin"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standardMargin"
+            android:layout_marginTop="100dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minLines="1"
+            android:singleLine="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/standardTextSize_14"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/dummy_title" />
+
+        <TextView
+            android:id="@+id/news_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standardMargin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minLines="1"
+            android:singleLine="true"
+            android:textColor="@color/gray800"
+            android:textSize="@dimen/standardTextSize_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/news_title"
+            tools:text="@string/dummy_author" />
+
+        <TextView
+            android:id="@+id/news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standardMargin"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minLines="1"
+            android:singleLine="true"
+            android:textColor="@color/gray800"
+            android:textSize="@dimen/standardTextSize_10"
+            app:layout_constraintStart_toEndOf="@+id/news_author"
+            app:layout_constraintTop_toBottomOf="@+id/news_title"
+            tools:text="@string/dummy_date" />
+
+
+        <TextView
+            android:id="@+id/iv_Faverate_expand"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_marginEnd="@dimen/smallMargin"
+            android:fontFamily="@font/fontello"
+            android:text=""
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/standardTextSize_24"
+            app:layout_constraintEnd_toStartOf="@+id/news_like_count"
+            app:layout_constraintTop_toBottomOf="@+id/news_title"
+           />
+
+        <com.github.florent37.shapeofview.shapes.RoundRectView
+            android:id="@+id/roundRectView"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="@dimen/smallMargin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_Faverate_expand"
+            app:layout_constraintVertical_bias="0.0"
+            app:shape_roundRect_borderColor="@android:color/black"
+            app:shape_roundRect_bottomLeftRadius="8dp"
+            app:shape_roundRect_bottomRightRadius="8dp">
+
+            <ImageView
+                android:id="@+id/news_image"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/standardMargin"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_Faverate_expand"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+        <TextView
+            android:id="@+id/news_like_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/standardMargin"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minLines="1"
+            android:singleLine="true"
+            android:textColor="@color/gray800"
+            android:textSize="@dimen/standardTextSize_10"
+            app:layout_constraintBottom_toTopOf="@+id/roundRectView"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

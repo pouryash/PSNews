@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    app:statusBarBackground="@android:color/transparent"
+    style="@style/tranparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewsPost">
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorRed"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/tv_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="@dimen/standardMargin_X2"
+            android:background="@drawable/back_background"
+            android:src="@drawable/ic_back"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingTop="@dimen/smallMargin"
+            android:paddingBottom="@dimen/smallMargin"
+            android:paddingEnd="@dimen/standardMargin"
+            android:paddingStart="@dimen/standardMargin"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/standardTextSize_18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.44" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="293dp" />
+
+        <com.github.florent37.shapeofview.shapes.RoundRectView
+            android:id="@+id/rr_news_post"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
+            app:shape_roundRect_topLeftRadius="@dimen/redius_30"
+            app:shape_roundRect_topRightRadius="@dimen/redius_30">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <TextView
+                    android:id="@+id/news_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standardMargin"
+                    android:layout_marginEnd="@dimen/standardMargin"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/standardTextSize_14"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline3"
+                    tools:text="@string/dummy_title" />
+
+                <TextView
+                    android:id="@+id/news_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standardMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:ellipsize="end"
+                    android:maxWidth="180dp"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/gray800"
+                    android:textSize="@dimen/standardTextSize_10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/news_title"
+                    tools:text="@string/dummy_author" />
+
+                <TextView
+                    android:id="@+id/news_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/standardMargin"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/gray800"
+                    android:textSize="@dimen/standardTextSize_10"
+                    app:layout_constraintStart_toEndOf="@+id/news_author"
+                    app:layout_constraintTop_toBottomOf="@+id/news_title"
+                    tools:text="@string/dummy_date" />
+
+                <TextView
+                    android:id="@+id/iv_news_like"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/smallMargin"
+                    android:layout_marginEnd="@dimen/standardMargin_X2"
+                    android:fontFamily="@font/fontello"
+                    android:text=""
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/standardTextSize_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/news_title" />
+
+                <TextView
+                    android:id="@+id/iv_news_comment"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="@dimen/standardMargin"
+                    android:fontFamily="@font/fontello"
+                    android:text=""
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/standardTextSize_24"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_news_like"
+                    app:layout_constraintTop_toBottomOf="@+id/news_title" />
+
+                <TextView
+                    android:id="@+id/tv_news_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:padding="@dimen/standardMargin_X2"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/standardTextSize_11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_news_comment"
+                    tools:text="@string/dummy_title" />
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_main_bottom_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share"
+            app:rippleColor="@color/gray500"
+            android:clickable="true"
+            app:backgroundTint="@color/colorWhite"
+            app:layout_constraintBottom_toTopOf="@+id/rr_news_post"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rr_news_post"
+            android:layout_marginEnd="@dimen/standardMargin_X2"
+            app:fabCustomSize="50dp"
+            android:focusable="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

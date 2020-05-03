@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="smallMargin">4dp</dimen>
+    <dimen name="standardMargin">8dp</dimen>
+    <dimen name="standardMargin_X2">16dp</dimen>
+    <dimen name="redius_30">30dp</dimen>
+    //text size
+    <dimen name="standardTextSize_10">10sp</dimen>
+    <dimen name="standardTextSize_11">11sp</dimen>
+    <dimen name="standardTextSize_12">12sp</dimen>
+    <dimen name="standardTextSize_13">13sp</dimen>
+    <dimen name="standardTextSize_14">14sp</dimen>
+    <dimen name="standardTextSize_15">15sp</dimen>
+    <dimen name="standardTextSize_16">16sp</dimen>
+    <dimen name="standardTextSize_17">17sp</dimen>
+    <dimen name="standardTextSize_18">18sp</dimen>
+    <dimen name="standardTextSize_19">19sp</dimen>
+    <dimen name="standardTextSize_20">20sp</dimen>
+    <dimen name="standardTextSize_21">21sp</dimen>
+    <dimen name="standardTextSize_22">22sp</dimen>
+    <dimen name="standardTextSize_23">23sp</dimen>
+    <dimen name="standardTextSize_24">24sp</dimen>
+    <dimen name="standardTextSize_25">25sp</dimen>
+    <dimen name="standardTextSize_26">26sp</dimen>
+    <dimen name="standardTextSize_27">27sp</dimen>
+    <dimen name="standardTextSize_28">28sp</dimen>
+    <dimen name="standardTextSize_29">29sp</dimen>
+    <dimen name="standardTextSize_30">30sp</dimen>
+
+</resources>
