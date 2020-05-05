@@ -3,4 +3,10 @@
     <string name="dummy_title">test news topic in the PSNews</string>
     <string name="dummy_author">author : pourya sharifi</string>
     <string name="dummy_date">2020/05/21 20:18</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="full_name">Full Name</string>
+
 </resources>

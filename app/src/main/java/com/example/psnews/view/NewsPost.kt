@@ -1,4 +1,4 @@
-package com.example.psnews
+package com.example.psnews.view
 
 import android.os.Build
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.psnews.R
 
 
 class NewsPost : AppCompatActivity() {
