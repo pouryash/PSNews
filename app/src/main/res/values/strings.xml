@@ -7,6 +7,12 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
     <string name="full_name">Full Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="user_not_connected_to_internet">اتصال با سرور ممکن نیست لطفا اینترنت خود را بررسی کنید</string>
+    <string name="server_connection_failed">خطا در برقراری ارتباط با سرور</string>
+    <string name="connection_error">خطا در برقراری ارتباط</string>
+    <string name="enter_all_filed">enter all filed</string>
 
 </resources>

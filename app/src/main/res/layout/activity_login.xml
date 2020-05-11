@@ -25,6 +25,30 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.35" />
 
+    <LinearLayout
+        android:id="@+id/lin_loading_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:translationZ="100dp"
+        android:visibility="invisible"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/loading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/standardMargin"
+            android:padding="@dimen/standardMargin_X2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/loading_anim" />
+
+    </LinearLayout>
+
+
     <com.github.florent37.shapeofview.shapes.ArcView
         android:id="@+id/arcView_login"
         android:layout_width="0dp"
@@ -88,7 +112,7 @@
 
 
             <Button
-                android:id="@+id/bt_link_to_register"
+                android:id="@+id/btn_link_to_register"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dip"
