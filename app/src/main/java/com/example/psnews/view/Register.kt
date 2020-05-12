@@ -12,6 +12,7 @@ import com.example.psnews.R
 import com.example.psnews.di.retrofitModlue
 import com.example.psnews.extentions.toast
 import com.example.psnews.helper.Commen
+import com.example.psnews.helper.SharedPrefrenceManager
 import com.example.psnews.helper.Validator
 import com.example.psnews.model.User
 import com.example.psnews.network.Status
@@ -19,25 +20,32 @@ import com.example.psnews.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_register.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
 import retrofit2.Retrofit
 
 
 class Register : AppCompatActivity() {
 
-    lateinit var viewModel: UserViewModel
+    private val sharedPrefrenceManager: SharedPrefrenceManager by inject()
+    private val userViewModel: UserViewModel by inject()
     var isBackPressed: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
-        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        checkUserSession()
 
         setupView()
+    }
 
+    private fun checkUserSession() {
 
+        if (!sharedPrefrenceManager.getUser().email.equals("")) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
 
     private fun setupView() {
@@ -46,14 +54,17 @@ class Register : AppCompatActivity() {
             startActivity(Intent(this, Login::class.java))
             finish()
         })
-        viewModel.registerLiveData.observe(this, Observer {
+        userViewModel.userLiveData.observe(this, Observer {
             when (it.status) {
                 Status.LOADING -> {
-                    Commen.startLoading(loading, lin_loading_dim,this)
+                    Commen.startLoading(loading, lin_loading_dim, this)
                 }
                 Status.SUCCESS -> {
+                    sharedPrefrenceManager.saveUser(it.data!!.data)
                     toast(msg = it.data!!.message)
                     lin_loading_dim.visibility = View.INVISIBLE
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 }
                 Status.ERROR -> {
                     toast(msg = it.error!!)
@@ -66,12 +77,12 @@ class Register : AppCompatActivity() {
         btn_register.setOnClickListener(View.OnClickListener {
             val user: User =
                 User(name.text.toString(), email.text.toString(), "", password.text.toString())
-            if (user.password.isNotEmpty() && user.password.isNotEmpty() && Validator.emailValidator(
+            if (user.password.isNotEmpty() && user.name.isNotEmpty() && Validator.emailValidator(
                     user.email,
                     this@Register
                 )
             ) {
-                viewModel.registerUser(user)
+                userViewModel.registerUser(user)
             } else if (name.text.toString().trim().isEmpty() || password.text.toString().trim()
                     .isEmpty()
             ) {
@@ -89,7 +100,7 @@ class Register : AppCompatActivity() {
 
         } else {
             isBackPressed = true
-            toast(msg = "please presse back button again to exist!!", lengh = Toast.LENGTH_SHORT)
+            toast(msg = "please presse back button again to exist!!", length = Toast.LENGTH_SHORT)
         }
         Handler().postDelayed(Runnable {
             if (isBackPressed)

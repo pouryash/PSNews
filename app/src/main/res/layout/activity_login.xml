@@ -29,7 +29,7 @@
         android:id="@+id/lin_loading_dim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000"
+        android:background="#A6000000"
         android:translationZ="100dp"
         android:visibility="invisible"
         android:gravity="center">

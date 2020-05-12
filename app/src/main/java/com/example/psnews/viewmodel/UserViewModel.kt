@@ -2,20 +2,23 @@ package com.example.psnews.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.psnews.di.appModule
 import com.example.psnews.helper.ErrorHandler
 import com.example.psnews.model.User
 import com.example.psnews.network.ApiResponse
 import com.example.psnews.repository.UserRepository
+import org.koin.core.KoinComponent
+import org.koin.core.inject
+import org.koin.java.KoinJavaComponent.get
+import org.koin.java.KoinJavaComponent.inject
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 
-class UserViewModel : ViewModel() {
+class UserViewModel : ViewModel(), KoinComponent{
 
-    private val repository: UserRepository = UserRepository()
-    val registerLiveData = MutableLiveData<ApiResponse<User>>()
-
-    //    val loginLiveData = MutableLiveData<ApiResponse<RequestResult>>()
+    private val repository: UserRepository by inject()
+    val userLiveData = MutableLiveData<ApiResponse<User>>()
     var id: String? = null
     var name: String? = null
     var email: String? = null
@@ -27,16 +30,16 @@ class UserViewModel : ViewModel() {
         repository.registerUser(user)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { registerLiveData.postValue(ApiResponse.loading()) }
+            .doOnSubscribe { userLiveData.postValue(ApiResponse.loading()) }
             .subscribe(
                 { response ->
-                    registerLiveData.postValue(
+                    userLiveData.postValue(
                         ApiResponse.success(response)
                     )
                 },
                 { error ->
 
-                    registerLiveData.postValue(
+                    userLiveData.postValue(
                         ApiResponse.error(
                             ErrorHandler.handleThrowable(error)
                         )
@@ -44,33 +47,27 @@ class UserViewModel : ViewModel() {
                 })
     }
 
-//    fun loginUser(user: User) {
-//
-//        repository.loginUser(user)
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .doOnSubscribe { loginLiveData.postValue(ApiResponse.loading()) }
-//            .subscribe(
-//                { response ->
-//                    loginLiveData.postValue(ApiResponse.success(
-//                        RequestResult(false,200,"login successfuly done")
-//                    ))
-//                },
-//                { error ->
-//                    val jsonObject: JSONObject = ErrorHandler.getHttpExBody(error)
-//
-//                    loginLiveData.postValue(
-//                        ApiResponse.error(
-//                            error,
-//                            RequestResult(
-//                                true,
-//                                jsonObject.getInt("status"),
-//                                jsonObject.getString("error_msg")
-//                            )
-//                        )
-//                    )
-//                })
-//    }
+    fun loginUser(user: User) {
+
+        repository.loginUser(user)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { userLiveData.postValue(ApiResponse.loading()) }
+            .subscribe(
+                { response ->
+                    userLiveData.postValue(
+                        ApiResponse.success(response)
+                    )
+                },
+                { error ->
+
+                    userLiveData.postValue(
+                        ApiResponse.error(
+                            ErrorHandler.handleThrowable(error)
+                        )
+                    )
+                })
+    }
 
 
 }

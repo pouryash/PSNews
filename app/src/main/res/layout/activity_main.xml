@@ -46,6 +46,7 @@
     <com.github.florent37.shapeofview.shapes.RoundRectView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:elevation="@dimen/smallMargin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

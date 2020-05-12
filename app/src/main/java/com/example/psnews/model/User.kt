@@ -7,21 +7,22 @@ data class User(
 
     @Expose
     @SerializedName("name")
-    val name: String,
+    var name: String,
 
     @Expose
     @SerializedName("email")
-    val email: String,
+    var email: String,
 
     @Expose
     @SerializedName("avatar")
-    val userAvatar: String,
+    var userAvatar: String,
 
-    val password: String
+    var password: String
 ) {
     @Expose
     @SerializedName("uid")
     val id: String? = null
 
+    constructor() : this("", "", "", "")
 
 }

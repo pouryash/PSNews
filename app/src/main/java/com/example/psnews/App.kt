@@ -2,7 +2,9 @@ package com.example.psnews
 
 import android.app.Application
 import android.content.Context
+import com.example.psnews.di.appModule
 import com.example.psnews.di.retrofitModlue
+import com.example.psnews.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.viewmodel.dsl.viewModel
@@ -12,9 +14,9 @@ import org.koin.core.logger.Level
 import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 
-class App: Application() {
+class App : Application() {
 
-    companion object{
+    companion object {
         lateinit var context: Context
     }
 
@@ -22,7 +24,7 @@ class App: Application() {
         super.onCreate()
         context = applicationContext
 
-        startKoin{
+        startKoin {
             // Koin Android logger
             androidLogger(Level.DEBUG)
 
@@ -31,7 +33,7 @@ class App: Application() {
             //inject Android context
             androidContext(this@App)
 
-            modules(retrofitModlue)
+            modules(listOf(retrofitModlue, viewModelModule, appModule))
         }
 
     }

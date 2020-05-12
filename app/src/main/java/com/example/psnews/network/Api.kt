@@ -22,7 +22,7 @@ interface Api {
     fun loginUser(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Observable<User>
+    ): Observable<Response<User>>
 
     @GET("androidlogin/news")
     fun getNesws(): Observable<News.NewsList>

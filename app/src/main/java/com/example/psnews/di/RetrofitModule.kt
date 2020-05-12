@@ -2,12 +2,14 @@ package com.example.psnews.di
 
 import com.example.psnews.helper.Constants
 import com.example.psnews.network.Api
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 

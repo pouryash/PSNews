@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.psnews">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -14,14 +15,18 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:name=".App"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Register">
+        <activity android:name=".view.Register"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.Login">
+        <activity android:name=".view.Login"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
@@ -29,7 +34,9 @@
 <!--            </intent-filter>-->
         </activity>
         <activity android:name=".view.NewsPost" />
-        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.MainActivity"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity"/>
     </application>
 
 </manifest>
