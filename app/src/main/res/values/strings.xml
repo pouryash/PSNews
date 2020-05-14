@@ -18,5 +18,6 @@
     <string name="enter_all_filed">enter all filed</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
+    <string name="log_out">Log Out</string>
 
 </resources>

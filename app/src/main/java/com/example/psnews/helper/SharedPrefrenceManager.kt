@@ -12,23 +12,26 @@ class SharedPrefrenceManager(context: Context) {
 
     fun saveUser(user: User) {
 
-            val editor: SharedPreferences.Editor = sharedPrefrences.edit()
-            val jsonObject = JSONObject()
+        val editor: SharedPreferences.Editor = sharedPrefrences.edit()
+        val jsonObject = JSONObject()
 
-            jsonObject.put("name", user.name)
-            jsonObject.put("email", user.email)
-            jsonObject.put("avatar", user.userAvatar)
+        jsonObject.put("id", user.id)
+        jsonObject.put("name", user.name)
+        jsonObject.put("email", user.email)
+        jsonObject.put("avatar", user.userAvatar)
 
-            editor.putString(Constants.KEY_USER_MODEL, jsonObject.toString())
-            editor.apply()
+        editor.putString(Constants.KEY_USER_MODEL, jsonObject.toString())
+        editor.apply()
 
     }
 
     fun getUser(): User {
         val user: User = User()
         val jsonModel = sharedPrefrences.getString(Constants.KEY_USER_MODEL, null)
-        jsonModel?.let {
+
+        if (!jsonModel.isNullOrEmpty()) {
             val jsonObject = JSONObject(jsonModel)
+            user.id = jsonObject.getString("id")
             user.name = jsonObject.getString("name")
             user.email = jsonObject.getString("email")
             user.userAvatar = jsonObject.getString("avatar")

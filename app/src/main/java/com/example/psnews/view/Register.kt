@@ -22,13 +22,14 @@ import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
+import org.koin.core.qualifier.named
 import retrofit2.Retrofit
 
 
 class Register : AppCompatActivity() {
 
     private val sharedPrefrenceManager: SharedPrefrenceManager by inject()
-    private val userViewModel: UserViewModel by inject()
+    private val userViewModel: UserViewModel by inject(named("b"))
     var isBackPressed: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +77,7 @@ class Register : AppCompatActivity() {
 
         btn_register.setOnClickListener(View.OnClickListener {
             val user: User =
-                User(name.text.toString(), email.text.toString(), "", password.text.toString())
+                User(name.text.toString(), email.text.toString(), "", "", password.text.toString())
             if (user.password.isNotEmpty() && user.name.isNotEmpty() && Validator.emailValidator(
                     user.email,
                     this@Register

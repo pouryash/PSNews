@@ -14,15 +14,16 @@ data class User(
     var email: String,
 
     @Expose
-    @SerializedName("avatar")
+    @SerializedName("userAvatar")
     var userAvatar: String,
+
+    @Expose
+    @SerializedName("uid")
+    var id: String? = null,
 
     var password: String
 ) {
-    @Expose
-    @SerializedName("uid")
-    val id: String? = null
 
-    constructor() : this("", "", "", "")
+    constructor() : this("", "", "", "","")
 
 }

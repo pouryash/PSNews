@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".Profile"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".view.Register"
             android:screenOrientation="sensorPortrait"

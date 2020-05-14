@@ -24,6 +24,14 @@ interface Api {
         @Field("password") password: String
     ): Observable<Response<User>>
 
+    @FormUrlEncoded
+    @POST("androidlogin/UpdateUser")
+    fun updateUser(
+        @Field("email") email: String,
+        @Field("name") name: String,
+        @Field("uid") userid: String
+    ): Observable<Response<User>>
+
     @GET("androidlogin/news")
     fun getNesws(): Observable<Response<ArrayList<News>>>
 

@@ -32,12 +32,12 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/civ_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginEnd="@dimen/standardMargin_X2"
             android:background="@drawable/circle_bakground"
-            android:elevation="@dimen/standardMargin"
+            app:elevation="@dimen/standardMargin"
             android:padding="@dimen/smallMargin"
             android:src="@drawable/ic_person_black_24dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline"

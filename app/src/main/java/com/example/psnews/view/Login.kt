@@ -20,10 +20,11 @@ import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_register.lin_loading_dim
 import kotlinx.android.synthetic.main.activity_register.loading
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 
 class Login : AppCompatActivity() {
 
-    private val userViewModel: UserViewModel by inject()
+    private val userViewModel: UserViewModel by inject(named("b"))
     private val sharedPrefrenceManager: SharedPrefrenceManager by inject()
     var isBackPressed: Boolean = false
 
@@ -62,15 +63,14 @@ class Login : AppCompatActivity() {
 
         btn_login.setOnClickListener(View.OnClickListener {
             val user: User =
-                User("", et_email_login.text.toString(), "", et_password_login.text.toString())
+                User("", et_email_login.text.toString(), "", "", et_password_login.text.toString())
             if (user.password.isNotEmpty() && Validator.emailValidator(
                     user.email,
                     this@Login
                 )
             ) {
                 userViewModel.loginUser(user)
-            } else if (et_password_login.text.toString().trim().isEmpty()
-            ) {
+            } else if (et_password_login.text.toString().trim().isEmpty()) {
                 toast(getString(R.string.enter_all_filed), Toast.LENGTH_SHORT)
             }
         })
