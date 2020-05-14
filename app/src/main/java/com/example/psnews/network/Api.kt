@@ -25,6 +25,6 @@ interface Api {
     ): Observable<Response<User>>
 
     @GET("androidlogin/news")
-    fun getNesws(): Observable<News.NewsList>
+    fun getNesws(): Observable<Response<ArrayList<News>>>
 
 }

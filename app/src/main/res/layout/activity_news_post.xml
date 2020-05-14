@@ -26,10 +26,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/tv_back"
+            android:id="@+id/iv_back"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginStart="@dimen/standardMargin_X2"
+            android:layout_marginTop="@dimen/standardMargin_X2"
             android:background="@drawable/back_background"
             android:src="@drawable/ic_back"
             android:clickable="true"

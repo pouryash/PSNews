@@ -9,7 +9,7 @@ data class News(
     val id: String,
 
     @Expose
-    @SerializedName("title")
+    @SerializedName("tittle")
     val title: String,
 
     @Expose

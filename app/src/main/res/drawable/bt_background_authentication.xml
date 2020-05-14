@@ -3,7 +3,7 @@
 
     <item android:state_pressed="false">
         <shape>
-            <solid android:color="@color/authenthication_secoundry"/>
+            <solid android:color="#be29ec"/>
             <corners android:radius="20dp"/>
         </shape>
 

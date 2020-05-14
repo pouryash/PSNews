@@ -3,6 +3,8 @@
     <string name="dummy_title">test news topic in the PSNews</string>
     <string name="dummy_author">author : pourya sharifi</string>
     <string name="dummy_date">2020/05/21 20:18</string>
+    <string name="dummy_profile_name">pourya sharif</string>
+    <string name="dummy_profile_email">pouryasharifi78@gmail.com</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -14,5 +16,7 @@
     <string name="server_connection_failed">خطا در برقراری ارتباط با سرور</string>
     <string name="connection_error">خطا در برقراری ارتباط</string>
     <string name="enter_all_filed">enter all filed</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
 
 </resources>
