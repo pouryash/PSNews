@@ -1,4 +1,4 @@
-package com.example.psnews
+package com.example.psnews.view
 
 import android.content.Intent
 import android.os.Build
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import com.example.psnews.R
 import com.example.psnews.databinding.ActivityProfileBinding
 import com.example.psnews.extentions.toast
 import com.example.psnews.helper.Commen
@@ -17,14 +18,10 @@ import com.example.psnews.helper.SharedPrefrenceManager
 import com.example.psnews.helper.Validator
 import com.example.psnews.model.User
 import com.example.psnews.network.Status
-import com.example.psnews.view.Login
-import com.example.psnews.view.MainActivity
 import com.example.psnews.viewmodel.UserViewModel
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.lin_loading_dim
 import kotlinx.android.synthetic.main.activity_profile.loading
-import kotlinx.android.synthetic.main.activity_register.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -101,7 +98,9 @@ class Profile : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window: Window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = ContextCompat.getColor(this, R.color.authenthication_secoundry)
+            window.statusBarColor = ContextCompat.getColor(this,
+                R.color.authenthication_secoundry
+            )
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 getWindow().decorView.systemUiVisibility = 0
             }

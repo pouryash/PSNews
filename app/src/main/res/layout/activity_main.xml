@@ -2,9 +2,10 @@
 <layout xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="newsViewmodel"
-            type="com.example.psnews.viewmodel.NewsViewModel" />
+            type="com.example.psnews.viewmodel.MainNewsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -33,16 +34,17 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_profile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="@dimen/standardMargin_X2"
             android:background="@drawable/circle_bakground"
-            app:elevation="@dimen/standardMargin"
             android:padding="@dimen/smallMargin"
-            android:src="@drawable/ic_person_black_24dp"
+            android:src="@drawable/ic_person_white_24dp"
+            app:elevation="@dimen/standardMargin"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imgaeUrl="@{newsViewmodel.profileAvatar}" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -63,15 +65,28 @@
             app:shape_roundRect_topRightRadius="@dimen/redius_30">
 
 
-            <androidx.recyclerview.widget.RecyclerView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                bind:context="@{newsViewmodel.context}"
-                bind:newsList="@{newsViewmodel.mutableNewsList}"
-                tools:listitem="@layout/news_row"
-                android:paddingBottom="@dimen/standardMargin"
-                android:clipToPadding="false"
-                android:background="@color/colorWhite"/>
+                android:background="@color/colorWhite">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingBottom="@dimen/standardMargin"
+                    bind:context="@{newsViewmodel.context}"
+                    bind:newsList="@{newsViewmodel.mutableNewsList}"
+                    tools:listitem="@layout/news_row" />
+
+                <ProgressBar
+                    android:id="@+id/progress_main_newsList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
 
         </com.github.florent37.shapeofview.shapes.RoundRectView>
 

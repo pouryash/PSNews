@@ -5,7 +5,9 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.widget.ImageView
+import androidx.databinding.Bindable
 import androidx.databinding.BindingAdapter
+import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -31,7 +33,7 @@ import org.koin.core.inject
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-class NewsViewModel(val context: Context) : ViewmodelObservable(), KoinComponent {
+class MainNewsViewModel(val context: Context) : ViewmodelObservable(), KoinComponent {
 
     val newsRepository: NewsRepository by inject()
     val mutableNewsResponseList: MutableLiveData<ApiResponse<ArrayList<News>>> =
@@ -45,6 +47,12 @@ class NewsViewModel(val context: Context) : ViewmodelObservable(), KoinComponent
     var author: String = ""
     var likeCount: String = ""
     var userId: String = ""
+    @get:Bindable
+    var profileAvatar:String = ""
+    set(value) {
+        field = value
+        notifyPropertyChanged(BR.profileAvatar)
+    }
 
     constructor(
         news: News,
@@ -102,6 +110,29 @@ class NewsViewModel(val context: Context) : ViewmodelObservable(), KoinComponent
 
                     override fun onResourceReady(resource: Bitmap?, model: Any, target: Target<Bitmap?>, dataSource: DataSource, isFirstResource: Boolean): Boolean {
                         iv.scaleType = ImageView.ScaleType.CENTER_CROP
+                        return false
+                    }
+                })
+                .into(iv)
+        }
+
+        @BindingAdapter("bind:imgaeUrl")
+        @JvmStatic
+        fun loadAvatarImage(iv: ImageView, uri: String?) {
+
+            Glide.with(iv.context).asBitmap().load(Uri.parse(uri))
+                .apply(
+                    RequestOptions().placeholder(R.drawable.ic_person_white_24dp)
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                )
+                .listener(object : RequestListener<Bitmap?> {
+                    override fun onLoadFailed(e: GlideException?, model: Any, target: Target<Bitmap?>, isFirstResource: Boolean): Boolean {
+                        iv.setPadding(4,4,4,4)
+                        return false
+                    }
+
+                    override fun onResourceReady(resource: Bitmap?, model: Any, target: Target<Bitmap?>, dataSource: DataSource, isFirstResource: Boolean): Boolean {
+                        iv.setPadding(0,0,0,0)
                         return false
                     }
                 })

@@ -5,7 +5,7 @@
 
         <variable
             name="news"
-            type="com.example.psnews.viewmodel.NewsViewModel" />
+            type="com.example.psnews.viewmodel.MainNewsViewModel" />
 
     </data>
 
@@ -157,7 +157,6 @@
                 tools:text="24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 
 </layout>

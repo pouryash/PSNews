@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
-        tools:context=".Profile">
+        tools:context=".view.Profile">
 
         <LinearLayout
             android:id="@+id/lin_loading_dim"
@@ -38,7 +38,7 @@
 
         </LinearLayout>
 
-        <com.github.florent37.shapeofview.shapes.RoundRectView
+        <com.github.florent37.shapeofview.shapes.ArcView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:elevation="@dimen/smallMargin"
@@ -46,8 +46,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shape_roundRect_bottomLeftRadius="25dp"
-            app:shape_roundRect_bottomRightRadius="25dp">
+            app:shape_roundRect_bottomLeftRadius="180dp"
+            app:shape_roundRect_bottomRightRadius="180dp"
+            app:shape_arc_height="30dp"
+            app:shape_arc_position="bottom">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -120,7 +122,7 @@
 
             </RelativeLayout>
 
-        </com.github.florent37.shapeofview.shapes.RoundRectView>
+        </com.github.florent37.shapeofview.shapes.ArcView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

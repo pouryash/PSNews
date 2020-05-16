@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.psnews.R
 import com.example.psnews.databinding.NewsRowBinding
 import com.example.psnews.model.News
-import com.example.psnews.viewmodel.NewsViewModel
+import com.example.psnews.viewmodel.MainNewsViewModel
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.news_row.*
+import kotlinx.android.synthetic.main.news_row.view.*
 
 class NewsAdapter(val newsList: ArrayList<News>, val context: Context) :
     RecyclerView.Adapter<NewsAdapter.NewsVH>() {
@@ -23,7 +26,7 @@ class NewsAdapter(val newsList: ArrayList<News>, val context: Context) :
     }
 
     override fun onBindViewHolder(holder: NewsVH, position: Int) {
-        holder.bindNews(NewsViewModel(newsList[position], context), position)
+        holder.bindNews(MainNewsViewModel(newsList[position], context), position)
     }
 
     override fun getItemCount(): Int {
@@ -35,10 +38,9 @@ class NewsAdapter(val newsList: ArrayList<News>, val context: Context) :
         var binding: NewsRowBinding = itemView
 
 
-        fun bindNews(news: NewsViewModel, position: Int) {
-            binding.news = news
+        fun bindNews(mainNews: MainNewsViewModel, position: Int) {
+            binding.news = mainNews
             binding.executePendingBindings()
-
         }
     }
 
