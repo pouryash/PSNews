@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/bsh_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_photo"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/standardTextSize_18"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:paddingBottom="@dimen/standardMargin_X2"
+            android:layout_margin="@dimen/standardMargin_X2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/lin_take_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="@dimen/smallMargin"
+            android:paddingTop="@dimen/smallMargin"
+            android:background="?selectableItemBackground"
+            app:layout_constraintTop_toBottomOf="@id/bsh_header">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="@color/gray600"
+                android:layout_marginStart="@dimen/standardMargin_X2"
+                android:layout_marginTop="@dimen/standardMargin"
+                android:layout_marginBottom="@dimen/standardMargin"
+                android:src="@drawable/ic_camera_alt_black_24dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/take_photo"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="sans-serif-medium"
+                android:paddingStart="@dimen/standardMargin_X2"
+                android:textSize="@dimen/standardTextSize_16"
+                android:layout_marginStart="@dimen/standardMargin_X2"
+                android:layout_gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_galery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="@dimen/smallMargin"
+            android:paddingTop="@dimen/smallMargin"
+            android:background="?selectableItemBackground"
+            app:layout_constraintTop_toBottomOf="@id/lin_take_photo">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="@color/gray600"
+                android:layout_marginStart="@dimen/standardMargin_X2"
+                android:layout_marginTop="@dimen/standardMargin"
+                android:layout_marginBottom="@dimen/standardMargin"
+                android:src="@drawable/ic_image_black_24dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_from_gallery"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="sans-serif-medium"
+                android:paddingStart="@dimen/standardMargin_X2"
+                android:textSize="@dimen/standardTextSize_16"
+                android:layout_marginStart="@dimen/standardMargin_X2"
+                android:layout_gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_remove_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="@dimen/smallMargin"
+            android:paddingTop="@dimen/smallMargin"
+            android:background="?selectableItemBackground"
+            app:layout_constraintTop_toBottomOf="@id/lin_galery">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="@color/colorRed"
+                android:layout_marginStart="@dimen/standardMargin_X2"
+                android:layout_marginTop="@dimen/standardMargin"
+                android:layout_marginBottom="@dimen/standardMargin"
+                android:src="@drawable/ic_delete_black_24dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove Photo"
+                android:textColor="@color/colorRed"
+                android:fontFamily="sans-serif-medium"
+                android:paddingStart="@dimen/standardMargin_X2"
+                android:textSize="@dimen/standardTextSize_16"
+                android:layout_marginStart="@dimen/standardMargin_X2"
+                android:layout_gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

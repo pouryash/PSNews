@@ -4,6 +4,7 @@
     <dimen name="smallMargin">4dp</dimen>
     <dimen name="standardMargin">8dp</dimen>
     <dimen name="standardMargin_X2">16dp</dimen>
+    <dimen name="margin32">32dp</dimen>
     <dimen name="redius_30">30dp</dimen>
     //text size
     <dimen name="standardTextSize_10">10sp</dimen>

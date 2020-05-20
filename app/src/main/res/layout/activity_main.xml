@@ -53,24 +53,26 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.1" />
 
-        <com.github.florent37.shapeofview.shapes.RoundRectView
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MyCardView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:elevation="@dimen/smallMargin"
+            app:contentPaddingTop="-7dp"
+            app:contentPaddingBottom="-8dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardElevation="@dimen/standardMargin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline"
-            app:shape_roundRect_topLeftRadius="@dimen/redius_30"
-            app:shape_roundRect_topRightRadius="@dimen/redius_30">
+            app:layout_constraintTop_toTopOf="@+id/guideline">
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite">
+                android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcl_main_news"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -88,7 +90,7 @@
             </RelativeLayout>
 
 
-        </com.github.florent37.shapeofview.shapes.RoundRectView>
+        </com.google.android.material.card.MaterialCardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

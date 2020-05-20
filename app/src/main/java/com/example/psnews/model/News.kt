@@ -1,8 +1,11 @@
 package com.example.psnews.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class News(
     @Expose
     @SerializedName("id")
@@ -30,12 +33,12 @@ data class News(
 
     @Expose
     @SerializedName("likes")
-    val likeCount: String,
+    var likeCount: String,
 
     @Expose
     @SerializedName("user_id")
     val userId: String
-) {
+): Parcelable {
 
     inner class NewsList(
         @Expose

@@ -1,5 +1,6 @@
 package com.example.psnews.di
 
+import android.content.Context
 import com.example.psnews.model.User
 import com.example.psnews.viewmodel.MainNewsViewModel
 import com.example.psnews.viewmodel.UserViewModel
@@ -14,10 +15,10 @@ val viewModelModule = module {
     viewModel(named("b")) {
         UserViewModel(androidContext())
     }
-    viewModel(named("a")) {
-        (user: User) -> UserViewModel(user, androidContext())
+    viewModel(named("a")) { (user: User) ->
+        UserViewModel(user, androidContext())
     }
 
-    viewModel { MainNewsViewModel(androidContext()) }
+    viewModel { (context: Context) -> MainNewsViewModel(context) }
 
 }

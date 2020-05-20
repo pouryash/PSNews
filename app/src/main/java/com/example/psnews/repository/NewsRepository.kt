@@ -21,5 +21,12 @@ class NewsRepository : KoinComponent{
         return retrofit.getNesws()
     }
 
+    fun isLike(userId:String, newsId:String): Observable<Response<Boolean>>{
+        return retrofit.isLike(newsId, userId)
+    }
+
+    fun likeAndDisLike(userId:String, newsId:String): Observable<Response<String>>{
+        return retrofit.likeAndDisLike(newsId, userId)
+    }
 
 }

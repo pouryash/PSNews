@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="userViewModel"
             type="com.example.psnews.viewmodel.UserViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
@@ -20,9 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#A6000000"
+            android:gravity="center"
             android:translationZ="100dp"
-            android:visibility="invisible"
-            android:gravity="center">
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/loading"
@@ -30,26 +32,26 @@
                 android:layout_height="150dp"
                 android:layout_margin="@dimen/standardMargin"
                 android:padding="@dimen/standardMargin_X2"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/loading_anim" />
+                bind:layout_constraintBottom_toBottomOf="parent"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toTopOf="parent"
+                bind:srcCompat="@drawable/loading_anim" />
 
         </LinearLayout>
 
         <com.github.florent37.shapeofview.shapes.ArcView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:elevation="@dimen/smallMargin"
-            app:layout_constraintBottom_toTopOf="@id/guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shape_roundRect_bottomLeftRadius="180dp"
-            app:shape_roundRect_bottomRightRadius="180dp"
-            app:shape_arc_height="30dp"
-            app:shape_arc_position="bottom">
+            bind:elevation="@dimen/smallMargin"
+            bind:layout_constraintBottom_toTopOf="@id/guideline"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            bind:shape_arc_height="30dp"
+            bind:shape_arc_position="bottom"
+            bind:shape_roundRect_bottomLeftRadius="180dp"
+            bind:shape_roundRect_bottomRightRadius="180dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -60,15 +62,34 @@
                     android:id="@+id/civ_profile"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
+
+                    android:layout_alignBottom="@id/civ_profile"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/standardMargin_X2"
-                    app:civ_border_color="@color/colorWhite"
-                    app:civ_border_width="1dp"
-                    bind:imgaeProfileUrl="@{userViewModel.userAvatar}"
+                    android:src="@drawable/ic_person_black_200dp"
+                    bind:civ_border_color="@color/colorWhite"
+                    bind:civ_border_width="1dp"
+                    bind:civ_circle_background_color="@color/colorWhite"
                     bind:context="@{userViewModel.context}"
-                    app:civ_circle_background_color="@color/colorWhite"
-                    android:src="@drawable/ic_person_black_24dp" />
+                    bind:imgaeProfileUrl="@{userViewModel.userAvatar}" />
 
+
+                <ImageView
+                    android:id="@+id/civ_add_avatar"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignEnd="@id/civ_profile"
+                    android:layout_alignBottom="@id/civ_profile"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_bakcground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_camera_alt_black_24dp"
+                    bind:civ_border_color="@color/colorBlack"
+                    bind:civ_border_width="1dp"
+                    bind:civ_circle_background_color="@color/colorWhite" />
 
                 <ImageView
                     android:id="@+id/iv_back"
@@ -85,9 +106,9 @@
                     android:paddingBottom="@dimen/smallMargin"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/standardTextSize_18"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_back" />
+                    bind:layout_constraintStart_toStartOf="parent"
+                    bind:layout_constraintTop_toTopOf="parent"
+                    bind:srcCompat="@drawable/ic_back" />
 
                 <TextView
                     android:id="@+id/tv_profile_name"
@@ -129,14 +150,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.30" />
+            bind:layout_constraintGuide_percent="0.30" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.40" />
+            bind:layout_constraintGuide_percent="0.40" />
 
 
         <androidx.cardview.widget.CardView
@@ -144,12 +165,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/standardMargin_X2"
             android:layout_marginEnd="@dimen/standardMargin_X2"
-            app:cardBackgroundColor="@color/colorPrimary"
-            app:cardCornerRadius="@dimen/standardMargin_X2"
-            app:cardElevation="@dimen/standardMargin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline2">
+            bind:cardBackgroundColor="@color/colorPrimary"
+            bind:cardCornerRadius="@dimen/standardMargin_X2"
+            bind:cardElevation="@dimen/standardMargin"
+            bind:layout_constraintEnd_toEndOf="parent"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@id/guideline2">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -159,10 +180,10 @@
                     android:id="@+id/tv_edit_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/standardMargin_X2"
-                    android:layout_marginEnd="@dimen/standardMargin"
                     android:layout_marginStart="@dimen/standardMargin_X2"
                     android:layout_marginTop="@dimen/standardMargin_X2"
+                    android:layout_marginEnd="@dimen/standardMargin"
+                    android:layout_marginBottom="@dimen/standardMargin_X2"
                     android:text="@string/edit_profile"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/standardTextSize_15"
@@ -186,14 +207,14 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_edit_profile"
                     android:layout_marginTop="@dimen/standardMargin"
-                    app:drawableTint="@color/gray400"
                     android:background="@drawable/et_background_login"
                     android:drawableStart="@drawable/ic_person_black_24dp"
-                    android:text="@{userViewModel.name}"
                     android:hint="@string/full_name"
                     android:inputType="textEmailAddress"
+                    android:text="@{userViewModel.name}"
                     android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/gray500" />
+                    android:textColorHint="@color/gray500"
+                    bind:drawableTint="@color/gray400" />
 
                 <EditText
                     android:id="@+id/et_editemail_profile"
@@ -203,9 +224,9 @@
                     android:layout_below="@id/et_editName_profile"
                     android:background="@drawable/et_background_login"
                     android:drawableStart="@drawable/ic_email_black_24dp"
-                    android:text="@{userViewModel.email}"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
+                    android:text="@{userViewModel.email}"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/gray500" />
 
@@ -216,31 +237,31 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/et_editemail_profile"
                     android:layout_alignParentEnd="true"
-                    app:drawableTint="@color/colorWhite"
-                    app:backgroundTint="@color/authenthication_secoundry"
                     android:layout_marginStart="@dimen/standardMargin_X2"
                     android:layout_marginTop="@dimen/standardMargin"
                     android:layout_marginEnd="@dimen/standardMargin_X2"
                     android:layout_marginBottom="@dimen/standardMargin"
                     android:drawableStart="@drawable/ic_check_black_24dp"
-                    android:text="@string/save" />
+                    android:text="@string/save"
+                    bind:backgroundTint="@color/authenthication_secoundry"
+                    bind:drawableTint="@color/colorWhite" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_logout"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="@dimen/standardMargin_X2"
-            android:layout_marginEnd="@dimen/standardMargin_X2"
             android:layout_marginStart="@dimen/standardMargin_X2"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="@dimen/standardMargin_X2"
+            android:layout_marginBottom="@dimen/standardMargin_X2"
             android:background="@drawable/bt_background_logout"
             android:text="@string/log_out"
-            app:layout_constraintBottom_toBottomOf="parent"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            bind:layout_constraintBottom_toBottomOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

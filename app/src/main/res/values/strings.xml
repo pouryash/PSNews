@@ -19,5 +19,14 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
     <string name="log_out">Log Out</string>
+    <string name="share">share</string>
+    <string name="comment">comment</string>
+    <string name="likes">likes</string>
+    <string name="choose_photo">Choose Photo</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="upload_from_gallery">Upload From Gallery</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -17,8 +17,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/news_item"
         android:layout_marginTop="@dimen/standardMargin_X2"
-        android:layout_marginStart="@dimen/standardMargin_X2"
-        android:layout_marginEnd="@dimen/standardMargin_X2"
+        android:layout_marginStart="@dimen/standardMargin"
+        android:layout_marginEnd="@dimen/standardMargin"
         app:cardPreventCornerOverlap="false"
         app:cardCornerRadius="@dimen/standardMargin"
         app:cardBackgroundColor="@color/colorPrimary"
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/standardMargin"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/standardMargin"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:minLines="1"
@@ -81,29 +81,14 @@
                 tools:text="@string/dummy_date" />
 
 
-            <TextView
-                android:id="@+id/iv_Faverate_expand"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/smallMargin"
-                android:gravity="center"
-                android:layout_marginEnd="@dimen/smallMargin"
-                android:fontFamily="@font/fontello"
-                android:text=""
-                android:textColor="@color/colorRed"
-                android:textSize="@dimen/standardTextSize_20"
-                app:layout_constraintEnd_toStartOf="@+id/news_like_count"
-                app:layout_constraintTop_toBottomOf="@+id/news_title"
-                />
-
             <com.github.florent37.shapeofview.shapes.RoundRectView
                 android:id="@+id/roundRectView"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:background="@color/colorBlack"
+                android:layout_marginTop="@dimen/standardMargin"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_Faverate_expand"
+                app:layout_constraintTop_toBottomOf="@+id/news_date"
                 app:layout_constraintVertical_bias="0.0"
                 app:shape_roundRect_borderColor="@android:color/black"
                 app:shape_roundRect_bottomLeftRadius="8dp"
@@ -139,22 +124,7 @@
 
             </com.github.florent37.shapeofview.shapes.RoundRectView>
 
-            <TextView
-                android:id="@+id/news_like_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/smallMargin"
-                android:layout_marginEnd="8dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:minLines="1"
-                android:text="@={news.likeCount}"
-                android:singleLine="true"
-                android:textColor="@color/gray800"
-                android:textSize="@dimen/standardTextSize_10"
-                app:layout_constraintBottom_toTopOf="@+id/roundRectView"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="24" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

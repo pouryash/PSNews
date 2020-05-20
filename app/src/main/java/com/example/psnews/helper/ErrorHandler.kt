@@ -16,17 +16,15 @@ object ErrorHandler {
             App.context.getString(R.string.user_not_connected_to_internet)
         } else if (e is HttpException) {
             e as HttpException
+            try {
                 return JSONObject(e.response()!!.errorBody()!!.string()).getString("error_msg")
-        }else if (e is SocketTimeoutException){
+            } catch (e: Exception) {
+                return App.context.getString(R.string.connection_error)
+            }
+        } else if (e is SocketTimeoutException) {
             App.context.getString(R.string.user_not_connected_to_internet)
         } else {
             App.context.getString(R.string.connection_error)
         }
-    }
-
-
-    fun getHttpBody(response: Response<ResponseBody>): JSONObject{
-
-        return JSONObject(response.body()!!.string())
     }
 }
