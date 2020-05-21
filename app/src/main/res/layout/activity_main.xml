@@ -20,15 +20,27 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/standardMargin_X2"
             android:fontFamily="@font/rockwen"
             android:freezesText="true"
             android:text="@string/app_name"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/standardTextSize_25"
+            android:textSize="@dimen/standardTextSize_24"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/civ_profile"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/standardMargin"
+            android:layout_marginStart="@dimen/standardMargin_X2"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -36,13 +48,13 @@
             android:id="@+id/civ_profile"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginEnd="@dimen/standardMargin_X2"
+            android:layout_marginStart="@dimen/standardMargin_X2"
             android:background="@drawable/circle_bakground"
             android:padding="@dimen/smallMargin"
             android:src="@drawable/ic_person_white_24dp"
             app:elevation="@dimen/standardMargin"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             bind:imgaeUrl="@{newsViewmodel.profileAvatar}" />
 

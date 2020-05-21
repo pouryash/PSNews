@@ -1,39 +1,45 @@
 package com.example.psnews.view
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.view.Gravity
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.appcompat.view.menu.MenuPopupHelper
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
 import com.example.psnews.Adapter.NewsAdapter
+import com.example.psnews.R
 import com.example.psnews.databinding.ActivityMainBinding
 import com.example.psnews.extentions.toast
-import com.example.psnews.helper.Commen
 import com.example.psnews.helper.Constants
 import com.example.psnews.helper.SharedPrefrenceManager
 import com.example.psnews.network.Status
 import com.example.psnews.viewmodel.MainNewsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.news_row.*
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
+
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivityMainBinding
+    lateinit var popup:PopupMenu
+    lateinit var binding: ActivityMainBinding
     val sharedPreferences: SharedPrefrenceManager by inject()
-    val viewmodel: MainNewsViewModel by inject(parameters = { parametersOf(this)})
+    val viewmodel: MainNewsViewModel by inject(parameters = { parametersOf(this) })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       initView()
-       setupView()
+        initView()
+        setupView()
     }
 
     override fun onResume() {
@@ -42,18 +48,29 @@ class MainActivity : AppCompatActivity() {
         checkAvatar()
     }
 
-    fun checkAvatar(){
-        if (viewmodel.profileAvatar != sharedPreferences.getUser().userAvatar){
+    fun checkAvatar() {
+        if (viewmodel.profileAvatar != sharedPreferences.getUser().userAvatar) {
             viewmodel.profileAvatar = sharedPreferences.getUser().userAvatar
         }
     }
 
+    @SuppressLint("RestrictedApi")
     fun setupView() {
         viewmodel.profileAvatar = sharedPreferences.getUser().userAvatar
         binding.newsViewmodel = viewmodel
 
         civ_profile.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, Profile::class.java))
+            civ_profile.isEnabled = false
+            Handler().postDelayed(Runnable { civ_profile.isEnabled = true }, 500)
+        })
+
+        iv_main_menu.setOnClickListener(View.OnClickListener {
+            popup.show()
+            val menuHelper = MenuPopupHelper(this, (popup.menu as MenuBuilder), iv_main_menu)
+            menuHelper.setForceShowIcon(true)
+            menuHelper.gravity = Gravity.END
+            menuHelper.show()
         })
 
         viewmodel.mutableNewsResponseList.observe(this, Observer {
@@ -69,11 +86,29 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        popup.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.menu_contact_us ->{
+                    false
+                }
+                R.id.menu_add_news ->{
+                    false
+                }
+                else -> {false}
+            }
+        }
+
     }
 
     fun initView() {
+
+        popup = PopupMenu(this, iv_main_menu)
+        popup.menuInflater.inflate(R.menu.main_menu, popup.getMenu())
+
         viewmodel.getNews()
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

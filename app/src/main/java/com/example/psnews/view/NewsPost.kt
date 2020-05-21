@@ -70,8 +70,10 @@ class NewsPost : AppCompatActivity() {
                 Status.LOADING -> {
                 }
                 Status.SUCCESS -> {
+                    iv_news_like.isEnabled = true
                 }
                 Status.ERROR -> {
+                    iv_news_like.isEnabled = true
                     toast(msg = it.error!!)
                 }
             }
@@ -132,6 +134,8 @@ class NewsPost : AppCompatActivity() {
     }
 
     private fun initView() {
+        //prevent like change before update
+        iv_news_like.isEnabled = false
         //make news content scrollable
         tv_news_content.movementMethod = ScrollingMovementMethod()
 
