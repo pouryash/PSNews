@@ -11,22 +11,15 @@ import android.view.View
 import android.view.Window
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import com.example.psnews.R
-import com.example.psnews.extentions.toast
-import com.example.psnews.helper.Commen
 import com.example.psnews.helper.Constants
 import com.example.psnews.helper.SharedPrefrenceManager
-import com.example.psnews.model.User
-import com.example.psnews.network.Status
 import com.example.psnews.viewmodel.UserViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.image_picker_fragment.view.*
 import okhttp3.MediaType
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.koin.android.ext.android.get
 

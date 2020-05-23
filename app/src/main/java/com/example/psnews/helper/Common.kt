@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.Context
 import android.database.Cursor
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.graphics.drawable.Drawable
 import android.media.ExifInterface
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
@@ -27,7 +29,26 @@ import java.io.OutputStream
 import kotlin.random.Random
 
 
-object Commen {
+object Common {
+
+    fun isNetworkConnected(context: Context): Boolean {
+        val cm: ConnectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val capabilities: NetworkCapabilities = cm.getNetworkCapabilities(cm.activeNetwork) ?: return false
+            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                return true
+            }
+
+        } else {
+            return cm.getActiveNetworkInfo() != null && cm.activeNetworkInfo.isConnected()
+        }
+        return false
+    }
 
     fun startLoading(view: ImageView, root: ViewGroup, context: Context) {
         root.bringChildToFront(view)
@@ -82,37 +103,37 @@ object Commen {
 
     }
 
-    fun correctRotation(uri: Uri, bitmap: Bitmap, context: Context):Bitmap{
+    fun correctRotation(uri: Uri, bitmap: Bitmap, context: Context): Bitmap {
 
         val filePath = getRealPathFromURI(uri.toString(), context)
         val bmp: Bitmap = bitmap
 
         val exif: ExifInterface
 
-            exif = ExifInterface(filePath)
-            val orientation = exif.getAttributeInt(
-                ExifInterface.TAG_ORIENTATION, 0
-            )
-            val matrix = Matrix()
-            if (orientation == 6) {
-                matrix.postRotate(90f)
-            } else if (orientation == 3) {
-                matrix.postRotate(180f)
-            } else if (orientation == 8) {
-                matrix.postRotate(270f)
-            }
-           val rotatedBitmap = Bitmap.createBitmap(
-                bmp, 0, 0,
-                bmp.getWidth(), bmp.getHeight(), matrix,
-                true
-            )
+        exif = ExifInterface(filePath)
+        val orientation = exif.getAttributeInt(
+            ExifInterface.TAG_ORIENTATION, 0
+        )
+        val matrix = Matrix()
+        if (orientation == 6) {
+            matrix.postRotate(90f)
+        } else if (orientation == 3) {
+            matrix.postRotate(180f)
+        } else if (orientation == 8) {
+            matrix.postRotate(270f)
+        }
+        val rotatedBitmap = Bitmap.createBitmap(
+            bmp, 0, 0,
+            bmp.getWidth(), bmp.getHeight(), matrix,
+            true
+        )
 
         return rotatedBitmap
     }
 
     fun reduceImageSize(bitmap: Bitmap, context: Context): File {
         val filesDir: File = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
-        val imageFile = File(filesDir, "${Random.nextInt(0,100).toString()}.jpeg")
+        val imageFile = File(filesDir, "${Random.nextInt(0, 100).toString()}.jpeg")
         val os: OutputStream
 
         os = FileOutputStream(imageFile)

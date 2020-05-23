@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.Gravity
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuBuilder
@@ -28,7 +27,7 @@ import org.koin.core.parameter.parametersOf
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var popup:PopupMenu
+    lateinit var popup: PopupMenu
     lateinit var binding: ActivityMainBinding
     val sharedPreferences: SharedPrefrenceManager by inject()
     val viewmodel: MainNewsViewModel by inject(parameters = { parametersOf(this) })
@@ -88,14 +87,21 @@ class MainActivity : AppCompatActivity() {
         })
 
         popup.setOnMenuItemClickListener {
-            when(it.itemId){
-                R.id.menu_contact_us ->{
+            when (it.itemId) {
+                R.id.menu_contact_us -> {
+                    startActivity(Intent(this, ContactUs::class.java))
                     false
                 }
-                R.id.menu_add_news ->{
+                R.id.menu_add_news -> {
+                    startActivityForResult(
+                        Intent(this, AddNews::class.java),
+                        Constants.REQUEST_INSERT_NEWS
+                    )
                     false
                 }
-                else -> {false}
+                else -> {
+                    false
+                }
             }
         }
 
@@ -113,12 +119,22 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == Constants.NEWS_REQUEST_ID) {
-            if (resultCode == Activity.RESULT_OK) {
-                val result = data!!.getStringExtra("result")
-                val pos = data.getIntExtra("pos", 0)
-                val newsAdapter = rcl_main_news.adapter as NewsAdapter
-                newsAdapter.updateNewsLikeCount(result!!, pos)
+        when (requestCode) {
+            Constants.NEWS_REQUEST_ID -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    val result = data!!.getStringExtra("result")
+                    val pos = data.getIntExtra("pos", 0)
+                    val newsAdapter = rcl_main_news.adapter as NewsAdapter
+                    newsAdapter.updateNewsLikeCount(result!!, pos)
+                }
+            }
+            Constants.REQUEST_INSERT_NEWS -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    val shouldUpdateList = data!!.getBooleanExtra("shouldUpdate", false)
+                    if (shouldUpdateList) {
+                        viewmodel.getNews()
+                    }
+                }
             }
         }
     }

@@ -13,8 +13,7 @@ import androidx.core.content.ContextCompat
 import com.example.psnews.R
 import com.example.psnews.databinding.ActivityNewsPostBinding
 import com.example.psnews.extentions.toast
-import com.example.psnews.helper.Commen
-import com.example.psnews.helper.Constants
+import com.example.psnews.helper.Common
 import com.example.psnews.helper.SharedPrefrenceManager
 import com.example.psnews.model.News
 import com.example.psnews.network.Status
@@ -86,7 +85,7 @@ class NewsPost : AppCompatActivity() {
             share.putExtra(Intent.EXTRA_TEXT, newsViewModel.content)
             share.putExtra(
                 Intent.EXTRA_STREAM,
-                Commen.saveTempImage(this, news_image, newsViewModel.imageUrl)
+                Common.saveTempImage(this, news_image, newsViewModel.imageUrl)
             )
             share.type = "image/*"
             startActivity(Intent.createChooser(share, "set news to:"))

@@ -88,7 +88,7 @@ class Profile : RuntimePermissionsActivity() {
         userViewModel.userLiveData.observe(this, Observer {
             when (it.status) {
                 Status.LOADING -> {
-                    Commen.startLoading(loading, lin_loading_dim, this)
+                    Common.startLoading(loading, lin_loading_dim, this)
                 }
                 Status.SUCCESS -> {
                     sharedPreferences.saveUser(it.data!!.data)
@@ -107,7 +107,7 @@ class Profile : RuntimePermissionsActivity() {
         userViewModel.mutableDeleteAvatar.observe(this, Observer {
             when (it.status) {
                 Status.LOADING -> {
-                    Commen.startLoading(loading, lin_loading_dim, this)
+                    Common.startLoading(loading, lin_loading_dim, this)
                 }
                 Status.SUCCESS -> {
                     userViewModel.userAvatar = "123"
@@ -124,7 +124,7 @@ class Profile : RuntimePermissionsActivity() {
         userViewModel.mutableUserUploadImage.observe(this, Observer {
             when (it.status) {
                 Status.LOADING -> {
-                    Commen.startLoading(loading, lin_loading_dim, this)
+                    Common.startLoading(loading, lin_loading_dim, this)
                 }
                 Status.SUCCESS -> {
                     var user: User = sharedPreferences.getUser()
@@ -173,12 +173,12 @@ class Profile : RuntimePermissionsActivity() {
                     val imageUri: Uri? = data!!.data
                     val imageStream: InputStream? = contentResolver.openInputStream(imageUri!!)
                     val selectedImage = BitmapFactory.decodeStream(imageStream)
-                    val rotatedImage = Commen.correctRotation(imageUri, selectedImage, this)
+                    val rotatedImage = Common.correctRotation(imageUri, selectedImage, this)
                     civ_profile.clearColorFilter()
                     civ_profile.setImageBitmap(rotatedImage)
 
                     //prepare data for upload avatar
-                    avatarFile = Commen.reduceImageSize(rotatedImage, this)
+                    avatarFile = Common.reduceImageSize(rotatedImage, this)
                     val requestFile: RequestBody =
                         RequestBody.create(MediaType.parse("multipart/form-data"), avatarFile)
                     val avatar =
@@ -199,7 +199,7 @@ class Profile : RuntimePermissionsActivity() {
 
             } else if (requestCode == Constants.REQUEST_CAMERA) {
                 val photo: Bitmap? = data!!.extras!!["data"] as Bitmap?
-                avatarFile = Commen.reduceImageSize(photo!!, this)
+                avatarFile = Common.reduceImageSize(photo!!, this)
                 val capturedUri = Uri.fromFile(avatarFile)
                 civ_profile.clearColorFilter()
                 civ_profile.setImageBitmap(photo)

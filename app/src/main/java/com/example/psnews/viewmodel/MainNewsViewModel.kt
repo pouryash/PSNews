@@ -194,9 +194,7 @@ class MainNewsViewModel(val context: Context) : ViewmodelObservable(), KoinCompo
 
             Glide.with(iv.context).asBitmap().load(Uri.parse(uri))
                 .apply(
-                    RequestOptions().placeholder(R.drawable.ic_person_white_24dp)
-                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                )
+                    RequestOptions().placeholder(R.drawable.ic_person_white_24dp))
                 .listener(object : RequestListener<Bitmap?> {
                     override fun onLoadFailed(
                         e: GlideException?,

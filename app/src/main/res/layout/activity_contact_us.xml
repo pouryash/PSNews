@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <data>
-
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,6 +9,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.ContactUs">
+
+        <LinearLayout
+            android:id="@+id/lin_loading_dim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A6000000"
+            android:translationZ="100dp"
+            android:visibility="invisible"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/loading"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="@dimen/standardMargin"
+                android:padding="@dimen/standardMargin_X2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/loading_anim" />
+
+        </LinearLayout>
 
 
         <ImageView
@@ -130,8 +150,10 @@
                           android:background="@drawable/et_background_login"
                           android:drawableStart="@drawable/ic_email_black_24dp"
                           android:hint="@string/email"
+                          android:alpha="0.7"
+                          android:enabled="false"
                           android:inputType="textEmailAddress"
-                          android:textColor="@color/colorBlack"
+                          android:textColor="@color/gray800"
                           android:textColorHint="@color/gray500" />
 
                       <EditText
@@ -142,15 +164,17 @@
                           android:layout_below="@id/et_editemail_contact_us"
                           android:background="@drawable/et_background_login"
                           android:hint="@string/message"
-                          android:minHeight="120dp"
                           android:gravity="top|left"
                           android:paddingStart="@dimen/standardMargin_X2"
-                          android:inputType="textEmailAddress"
+                          android:minHeight="120dp"
+                          android:maxHeight="120dp"
+                          android:paddingEnd="@dimen/standardMargin"
+                          android:inputType="textMultiLine"
                           android:textColor="@color/colorBlack"
                           android:textColorHint="@color/gray500" />
 
                       <Button
-                          android:id="@+id/btn_save_contact_us"
+                          android:id="@+id/btn_submit_contact_us"
                           style="@style/Widget.AppCompat.Button.Colored"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"

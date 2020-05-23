@@ -58,4 +58,15 @@ interface Api {
     @GET("androidlogin/news")
     fun getNesws(): Observable<Response<ArrayList<News>>>
 
+    @Multipart
+    @POST("androidlogin/InsertNews")
+    fun insertNews(
+        @Part("uid") uid: RequestBody,
+        @Part("title") title: RequestBody,
+        @Part("content") content: RequestBody,
+        @Part("author") author: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Query("type") type: String
+    ): Observable<Response<News>>
+
 }

@@ -11,5 +11,6 @@ object Constants {
     const val RESULT_LOAD_IMG = 101
     const val REQUEST_EXTERNAL_STORAGE = 102
     const val REQUEST_CAMERA = 103
+    const val REQUEST_INSERT_NEWS = 104
 
 }
