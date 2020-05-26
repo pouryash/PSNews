@@ -12,5 +12,6 @@ object Constants {
     const val REQUEST_EXTERNAL_STORAGE = 102
     const val REQUEST_CAMERA = 103
     const val REQUEST_INSERT_NEWS = 104
+    const val COMMENT_FRAGMENT_BUNDEL = "frg_comment_bundel"
 
 }

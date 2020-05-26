@@ -163,8 +163,8 @@
 
                     <TextView
                         android:id="@+id/iv_news_comment"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_marginTop="6dp"
                         android:layout_marginStart="@dimen/standardMargin"
@@ -196,7 +196,7 @@
 
                     <com.like.LikeButton
                         app:icon_type="heart"
-                        app:icon_size="25dp"
+                        app:icon_size="28dp"
                         android:layout_marginTop="@dimen/standardMargin"
                         android:layout_marginEnd="@dimen/standardMargin_X2"
                         android:layout_marginStart="@dimen/standardMargin"
@@ -252,7 +252,10 @@
                 bind:rippleColor="@color/gray500" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <FrameLayout
+            android:id="@+id/fr_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

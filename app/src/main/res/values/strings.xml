@@ -23,7 +23,7 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
     <string name="log_out">Log Out</string>
-    <string name="comment">comment</string>
+    <string name="comment">Comment</string>
     <string name="likes">likes</string>
     <string name="choose_photo">Choose Photo</string>
     <string name="take_photo">Take Photo</string>
@@ -37,5 +37,6 @@
     <string name="share">Share</string>
     <string name="add_content">add content…</string>
     <string name="message">message</string>
+    <string name="insert_your_comment">insert your comment...</string>
 
 </resources>

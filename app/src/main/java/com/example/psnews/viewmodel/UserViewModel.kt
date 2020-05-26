@@ -120,12 +120,6 @@ class UserViewModel(val context: Context) : ViewmodelObservable(), KoinComponent
         }
     }
 
-    @Synchronized
-    private fun clearGlideTarget(target: ViewTarget<ImageView, Bitmap>) {
-        Glide.with(context).clear(target)
-    }
-
-
     fun registerUser(user: User) {
 
         repository.registerUser(user)

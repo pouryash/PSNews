@@ -1,5 +1,6 @@
 package com.example.psnews.network
 
+import com.example.psnews.model.Comment
 import com.example.psnews.model.News
 import com.example.psnews.model.Response
 import com.example.psnews.model.User
@@ -68,5 +69,16 @@ interface Api {
         @Part image: MultipartBody.Part,
         @Query("type") type: String
     ): Observable<Response<News>>
+
+    @GET("androidlogin/comments")
+    fun getComments(@Query("news_id") type: String): Observable<Response<ArrayList<Comment>>>
+
+    @FormUrlEncoded
+    @POST("androidlogin/insertComments")
+    fun insertComment(
+        @Field("body") body: String,
+        @Field("userId") userId: String,
+        @Field("newsId") newsId: String
+    ): Observable<Response<Comment>>
 
 }

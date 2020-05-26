@@ -62,7 +62,6 @@
                     android:id="@+id/civ_profile"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-
                     android:layout_alignBottom="@id/civ_profile"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/standardMargin_X2"

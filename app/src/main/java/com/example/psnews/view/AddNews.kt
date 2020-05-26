@@ -116,8 +116,7 @@ class AddNews : RuntimePermissionsActivity() {
 
         fab_share_news.setOnClickListener {
             var news: News? = null
-            if (et_title_share_news.text.toString()
-                    .isNotEmpty() && et_content_share_news.text.toString()
+            if (et_title_share_news.text.toString().isNotEmpty() && et_content_share_news.text.toString()
                     .isNotEmpty() && newsFile.exists()
             ) {
                 val requestFile: RequestBody =
@@ -180,6 +179,7 @@ class AddNews : RuntimePermissionsActivity() {
             }
         }
     }
+
 
     override fun onStart() {
         super.onStart()

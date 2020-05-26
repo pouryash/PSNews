@@ -8,6 +8,7 @@ import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.psnews.R
@@ -29,6 +30,8 @@ import org.koin.core.parameter.parametersOf
 
 class NewsPost : AppCompatActivity() {
 
+    var comment = Comment()
+    val frm = supportFragmentManager
     val sharedPreferences: SharedPrefrenceManager by inject()
     lateinit var binding: ActivityNewsPostBinding
     private var newsViewModel: MainNewsViewModel = get(parameters = { parametersOf(this) })
@@ -44,7 +47,18 @@ class NewsPost : AppCompatActivity() {
 
     }
 
+
     private fun setupView() {
+
+        iv_news_comment.setOnClickListener{
+
+            comment = Comment.newInstance(newsViewModel.newsId!!)
+            val ft = frm.beginTransaction()
+            ft.setCustomAnimations(R.anim.slid_up, R.anim.slide_down)
+            ft.add(fr_container.id, comment)
+            ft.addToBackStack(null)
+            ft.commit()
+        }
 
         newsViewModel = MainNewsViewModel(intent.getParcelableExtra("news")!!, this)
         binding.newsViewModel = newsViewModel
@@ -56,9 +70,11 @@ class NewsPost : AppCompatActivity() {
                 Status.LOADING -> {
                 }
                 Status.SUCCESS -> {
+                    iv_news_like.isEnabled = true
                     newsViewModel.liked = it.data!!.data
                 }
                 Status.ERROR -> {
+                    iv_news_like.isEnabled = true
                     toast(msg = it.error!!)
                 }
             }
@@ -69,10 +85,8 @@ class NewsPost : AppCompatActivity() {
                 Status.LOADING -> {
                 }
                 Status.SUCCESS -> {
-                    iv_news_like.isEnabled = true
                 }
                 Status.ERROR -> {
-                    iv_news_like.isEnabled = true
                     toast(msg = it.error!!)
                 }
             }
@@ -159,15 +173,19 @@ class NewsPost : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val returnIntent = Intent()
-        val news:News = intent.getParcelableExtra("news")!!
-        if (!news.likeCount.equals(newsViewModel.likeCount)){
-            returnIntent.putExtra("result", newsViewModel.likeCount)
-            returnIntent.putExtra("pos", intent.getIntExtra("pos",0))
-            setResult(Activity.RESULT_OK, returnIntent)
-        }else{
-            setResult(Activity.RESULT_CANCELED, returnIntent)
-        }
-        this.finish()
+       if(comment.isVisible){
+           frm.beginTransaction().setCustomAnimations(R.anim.slide_down, R.anim.slide_down).remove(comment).commit()
+       }else{
+           val returnIntent = Intent()
+           val news:News = intent.getParcelableExtra("news")!!
+           if (!news.likeCount.equals(newsViewModel.likeCount)){
+               returnIntent.putExtra("result", newsViewModel.likeCount)
+               returnIntent.putExtra("pos", intent.getIntExtra("pos",0))
+               setResult(Activity.RESULT_OK, returnIntent)
+           }else{
+               setResult(Activity.RESULT_CANCELED, returnIntent)
+           }
+           this.finish()
+       }
     }
 }

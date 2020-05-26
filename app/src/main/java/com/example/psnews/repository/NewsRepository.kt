@@ -1,6 +1,7 @@
 package com.example.psnews.repository
 
 import com.example.psnews.di.appModule
+import com.example.psnews.model.Comment
 import com.example.psnews.model.News
 import com.example.psnews.model.Response
 import com.example.psnews.model.User
@@ -38,6 +39,14 @@ class NewsRepository : KoinComponent{
         val content = RequestBody.create(MediaType.parse("text/plain"), news.content)
         val author = RequestBody.create(MediaType.parse("text/plain"), news.author)
         return retrofit.insertNews(uid, title, content, author, image, type)
+    }
+
+    fun getComments(newsId:String): Observable<Response<ArrayList<Comment>>>{
+        return retrofit.getComments(newsId)
+    }
+
+    fun insertComment(body:String, userId:String, newsId:String): Observable<Response<Comment>>{
+        return retrofit.insertComment(body, userId, newsId);
     }
 
 }
