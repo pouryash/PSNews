@@ -60,6 +60,8 @@ class AddNews : RuntimePermissionsActivity() {
     }
 
     override fun onBackPressed() {
+        if (newsFile.exists())
+            newsFile.delete()
         super.onBackPressed()
     }
 
@@ -71,6 +73,8 @@ class AddNews : RuntimePermissionsActivity() {
                     Common.startLoading(loading, lin_loading_dim, this)
                 }
                 Status.SUCCESS -> {
+                    if (newsFile.exists())
+                        newsFile.delete()
                     shouldUpdateNewsList = true
                     toast(msg = it.data!!.message)
                     lin_loading_dim.visibility = View.INVISIBLE
@@ -138,7 +142,8 @@ class AddNews : RuntimePermissionsActivity() {
                     sharedPrefrenceManager.getUser().id.toString()
                 )
                 addNewsViewModel.insertNews(news, image, "newsMedia")
-            } else if (!newsFile.exists()) {
+            } else if (!newsFile.exists() && et_title_share_news.text.toString().isNotEmpty() && et_content_share_news.text.toString()
+                    .isNotEmpty()) {
                 news = News(
                     "",
                     et_title_share_news.text.toString(),

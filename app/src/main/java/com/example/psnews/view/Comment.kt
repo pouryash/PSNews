@@ -40,7 +40,7 @@ import org.koin.core.parameter.parametersOf
 
 class Comment : Fragment() {
 
-    lateinit var inputMethodManager:InputMethodManager
+    lateinit var inputMethodManager: InputMethodManager
     private val sharedPreferences: SharedPrefrenceManager by inject()
     private val commentViewModel: CommentViewModel by inject(parameters = {
         parametersOf(
@@ -77,8 +77,12 @@ class Comment : Fragment() {
     }
 
     private fun initViews() {
-        inputMethodManager =  requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
+        inputMethodManager =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.toggleSoftInput(
+            InputMethodManager.SHOW_FORCED,
+            InputMethodManager.HIDE_IMPLICIT_ONLY
+        )
         binding.etSendComment.requestFocus()
     }
 
@@ -99,6 +103,7 @@ class Comment : Fragment() {
         })
 
         binding.ivBack.setOnClickListener(View.OnClickListener {
+            inputMethodManager.hideSoftInputFromWindow(requireActivity().currentFocus!!.windowToken, 0);
             requireActivity().onBackPressed()
         })
 
@@ -130,10 +135,14 @@ class Comment : Fragment() {
             override fun afterTextChanged(ss: Editable?) {
                 if (ss.toString().trim().isNotEmpty()) {
                     binding.ivSendComment.alpha = 1f
+                    binding.ivSendComment.isClickable = true
+                    binding.ivSendComment.isFocusable = true
 
-                } else
+                } else {
                     binding.ivSendComment.alpha = 0.6f
-
+                    binding.ivSendComment.isClickable = false
+                    binding.ivSendComment.isFocusable = false
+                }
             }
 
             override fun beforeTextChanged(ss: CharSequence?, p1: Int, p2: Int, p3: Int) {
