@@ -16,13 +16,16 @@ import com.example.psnews.Adapter.NewsAdapter
 import com.example.psnews.R
 import com.example.psnews.databinding.ActivityMainBinding
 import com.example.psnews.extentions.toast
+import com.example.psnews.helper.Common
 import com.example.psnews.helper.Constants
 import com.example.psnews.helper.SharedPrefrenceManager
 import com.example.psnews.network.Status
 import com.example.psnews.viewmodel.MainNewsViewModel
+import com.example.psnews.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
+import org.koin.core.qualifier.named
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var popup: PopupMenu
     lateinit var binding: ActivityMainBinding
     val sharedPreferences: SharedPrefrenceManager by inject()
+    private val userViewModel: UserViewModel by inject(named("b"))
     val viewmodel: MainNewsViewModel by inject(parameters = { parametersOf(this) })
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +61,25 @@ class MainActivity : AppCompatActivity() {
     fun setupView() {
         viewmodel.profileAvatar = sharedPreferences.getUser().userAvatar
         binding.newsViewmodel = viewmodel
+
+        userViewModel.userLiveData.observe(this, Observer {
+            when (it.status) {
+                Status.LOADING -> {
+                    Common.startLoading(loading, lin_loading_dim, this)
+                }
+                Status.SUCCESS -> {
+                    sharedPreferences.saveUser(it.data!!.data)
+                    checkAvatar()
+                    lin_loading_dim.visibility = View.INVISIBLE
+                    viewmodel.getNews()
+                }
+                Status.ERROR -> {
+                    toast(msg = it.error!!)
+                    lin_loading_dim.visibility = View.INVISIBLE
+
+                }
+            }
+        })
 
         civ_profile.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, Profile::class.java))
@@ -112,7 +135,11 @@ class MainActivity : AppCompatActivity() {
         popup = PopupMenu(this, iv_main_menu)
         popup.menuInflater.inflate(R.menu.main_menu, popup.getMenu())
 
-        viewmodel.getNews()
+        if (intent.getBooleanExtra("isLogin",false)){
+            viewmodel.getNews()
+        }else{
+            userViewModel.getUser(sharedPreferences.getUser().id.toString())
+        }
     }
 
 

@@ -164,6 +164,28 @@ class UserViewModel(val context: Context) : ViewmodelObservable(), KoinComponent
                 })
     }
 
+    fun getUser(uid:String) {
+
+        repository.getUser(uid)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { userLiveData.postValue(ApiResponse.loading()) }
+            .subscribe(
+                { response ->
+                    userLiveData.postValue(
+                        ApiResponse.success(response)
+                    )
+                },
+                { error ->
+
+                    userLiveData.postValue(
+                        ApiResponse.error(
+                            ErrorHandler.handleThrowable(error)
+                        )
+                    )
+                })
+    }
+
     fun updateUser(user: User) {
 
         repository.updateUser(user)

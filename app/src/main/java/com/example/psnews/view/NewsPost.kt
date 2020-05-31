@@ -166,9 +166,11 @@ class NewsPost : AppCompatActivity() {
         } else if (Build.VERSION.SDK_INT >= 19) {
             //for new api versions.
             val decorView = window.decorView
-            val uiOptions =
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            decorView.systemUiVisibility = uiOptions
+
+
+            decorView.apply {
+                systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+            }
         }
     }
 

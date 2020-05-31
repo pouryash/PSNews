@@ -110,7 +110,10 @@ class Profile : RuntimePermissionsActivity() {
                     Common.startLoading(loading, lin_loading_dim, this)
                 }
                 Status.SUCCESS -> {
-                    userViewModel.userAvatar = "123"
+                    val user:User = sharedPreferences.getUser()
+                    user.userAvatar = ""
+                    userViewModel.userAvatar = ""
+                    sharedPreferences.saveUser(user)
                     lin_loading_dim.visibility = View.INVISIBLE
                     toast(msg = it.data!!.message)
                 }

@@ -193,8 +193,8 @@ class MainNewsViewModel(val context: Context) : ViewmodelObservable(), KoinCompo
         fun loadAvatarImage(iv: ImageView, uri: String?) {
 
             Glide.with(iv.context).asBitmap().load(Uri.parse(uri))
-                .apply(
-                    RequestOptions().placeholder(R.drawable.ic_person_white_24dp))
+                .apply(RequestOptions().placeholder(R.drawable.ic_person_white_24dp)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE))
                 .listener(object : RequestListener<Bitmap?> {
                     override fun onLoadFailed(
                         e: GlideException?,

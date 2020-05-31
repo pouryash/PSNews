@@ -26,6 +26,10 @@ class UserRepository : KoinComponent {
         return retrofit.loginUser(user.email, user.password)
     }
 
+    fun getUser(uid:String): Observable<Response<User>> {
+        return retrofit.getUser(uid)
+    }
+
     fun updateUser(user: User): Observable<Response<User>> {
         return retrofit.updateUser(user.email, user.name, user.id!!)
     }

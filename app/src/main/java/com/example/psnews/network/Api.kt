@@ -59,6 +59,12 @@ interface Api {
     @GET("androidlogin/news")
     fun getNesws(): Observable<Response<ArrayList<News>>>
 
+    @FormUrlEncoded
+    @POST("androidlogin/user")
+    fun getUser(
+        @Field("uid") userid: String
+    ): Observable<Response<User>>
+
     @Multipart
     @POST("androidlogin/InsertNews")
     fun insertNews(

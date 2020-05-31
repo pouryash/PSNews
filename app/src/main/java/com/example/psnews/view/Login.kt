@@ -49,7 +49,9 @@ class Login : AppCompatActivity() {
                     sharedPrefrenceManager.saveUser(it.data!!.data)
                     toast(msg = it.data!!.message)
                     lin_loading_dim.visibility = View.INVISIBLE
-                    startActivity(Intent(this, MainActivity::class.java))
+                    var intent:Intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("isLogin",true)
+                    startActivity(intent)
                     finish()
                 }
                 Status.ERROR -> {
