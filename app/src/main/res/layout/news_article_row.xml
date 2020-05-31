@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.example.psnews.viewmodel.MainNewsViewModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/news_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/standardMargin_X2"
+        android:layout_marginTop="@dimen/standardMargin_X2"
+        android:layout_marginEnd="@dimen/standardMargin_X2"
+        bind:cardBackgroundColor="@color/colorPrimary"
+        bind:cardCornerRadius="@dimen/standardMargin"
+        bind:cardElevation="@dimen/standardMargin"
+        bind:cardPreventCornerOverlap="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standardMargin"
+                android:layout_marginTop="100dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:minLines="1"
+                android:singleLine="true"
+                android:text="@={news.title}"
+                android:textColor="@color/colorBlack"
+                android:textDirection="ltr"
+                android:textSize="@dimen/standardTextSize_14"
+                android:textStyle="bold"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/dummy_title" />
+
+            <TextView
+                android:id="@+id/news_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standardMargin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:minLines="1"
+                android:singleLine="true"
+                android:text="@={news.author}"
+                android:textColor="@color/gray800"
+                android:textSize="@dimen/standardTextSize_10"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/news_title"
+                tools:text="@string/dummy_author" />
+
+            <TextView
+                android:id="@+id/news_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/standardMargin"
+                android:layout_marginTop="@dimen/standardMargin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:minLines="1"
+                android:singleLine="true"
+                android:text="@={news.date}"
+                android:textColor="@color/gray800"
+                android:textSize="@dimen/standardTextSize_10"
+                bind:layout_constraintStart_toEndOf="@+id/news_author"
+                bind:layout_constraintTop_toBottomOf="@+id/news_title"
+                tools:text="@string/dummy_date" />
+
+            <TextView
+                android:id="@+id/news_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/standardMargin"
+                android:layout_marginEnd="@dimen/standardMargin"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:minLines="1"
+                android:paddingTop="@dimen/smallMargin"
+                android:paddingBottom="@dimen/standardMargin"
+                android:text="@{news.content}"
+                android:textColor="@color/colorBlack"
+                android:textDirection="ltr"
+                android:textSize="@dimen/standardTextSize_13"
+                bind:layout_constraintEnd_toEndOf="parent"
+                bind:layout_constraintStart_toStartOf="parent"
+                bind:layout_constraintTop_toBottomOf="@+id/news_date"
+                tools:text="@string/dummy_news_content" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

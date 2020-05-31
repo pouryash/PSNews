@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/ill_register"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/standardMargin"
+        android:padding="@dimen/standardMargin_X2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_sign_up_ill" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <LinearLayout
+        android:id="@+id/lin_loading_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A6000000"
+        android:translationZ="100dp"
+        android:visibility="invisible"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/loading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/standardMargin"
+            android:padding="@dimen/standardMargin_X2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/loading_anim" />
+
+    </LinearLayout>
+
+    <com.github.florent37.shapeofview.shapes.ArcView
+        android:id="@+id/arcView_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:shape_arc_height="30dp"
+        app:shape_arc_position="top">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/authenthication_main"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <EditText
+                android:id="@+id/name"
+                style="@style/authentication_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standardMargin"
+                android:background="@drawable/et_background_login"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:drawableTint="#C9CCCC"
+                android:hint="@string/full_name"
+                android:inputType="textCapWords" />
+
+            <EditText
+                android:id="@+id/email"
+                style="@style/authentication_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_background_login"
+                android:drawableStart="@drawable/ic_email_black_24dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/authentication_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_background_login"
+                android:drawableStart="@drawable/ic_lock_black_24dp"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_register"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/standardMargin_X2"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/standardMargin_X2"
+                android:background="@drawable/bt_background_authentication"
+                android:text="@string/sign_up"
+                android:textColor="@color/colorWhite" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_link_to_login"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dip"
+                android:background="@null"
+                android:text="@string/btn_link_to_login"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+
+    </com.github.florent37.shapeofview.shapes.ArcView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="commentViewModel"
+            type="com.example.psnews.viewmodel.CommentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standardMargin_X2"
+        android:background="@android:color/transparent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_avatar_comment"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="@dimen/standardMargin"
+            android:tint="@color/authenthication_secoundry"
+            app:civ_circle_background_color="@color/colorWhite"
+            app:imageCommentAvatar="@{commentViewModel.avatar}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standardMargin"
+            android:layout_marginTop="@dimen/standardMargin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minLines="1"
+            android:singleLine="true"
+            android:text="@{commentViewModel.name}"
+            android:textColor="@color/colorBlack"
+            android:textDirection="ltr"
+            android:textSize="@dimen/standardTextSize_14"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/civ_avatar_comment"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/dummy_title" />
+
+        <TextView
+            android:id="@+id/tv_body_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standardMargin"
+            android:layout_marginEnd="@dimen/standardMargin"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:minLines="1"
+            android:paddingTop="@dimen/smallMargin"
+            android:paddingBottom="@dimen/standardMargin"
+            android:text="@{commentViewModel.comment}"
+            android:textColor="@color/colorBlack"
+            android:textDirection="ltr"
+            android:textSize="@dimen/standardTextSize_12"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/civ_avatar_comment"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_comment"
+            tools:text="@string/dummy_news_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="@dimen/standardMargin_X2"
+            android:layout_marginTop="@dimen/standardMargin"
+            android:layout_marginEnd="@dimen/standardMargin_X2"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_body_comment"
+            tools:layout_editor_absoluteX="16dp" />
+
+
+        <ProgressBar
+            android:id="@+id/pb_comment"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:padding="2dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_body_comment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/civ_avatar_comment" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

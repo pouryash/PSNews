@@ -3,4 +3,41 @@
     <string name="dummy_title">test news topic in the PSNews</string>
     <string name="dummy_author">author : pourya sharifi</string>
     <string name="dummy_date">2020/05/21 20:18</string>
+    <string name="dummy_profile_name">pourya sharif</string>
+    <string name="dummy_profile_email">pouryasharifi78@gmail.com</string>
+    <string name="dummy_news_content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+        survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+        1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="full_name">Full Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="user_not_connected_to_internet">اتصال با سرور ممکن نیست لطفا اینترنت خود را بررسی کنید</string>
+    <string name="server_connection_failed">خطا در برقراری ارتباط با سرور</string>
+    <string name="connection_error">خطا در برقراری ارتباط</string>
+    <string name="enter_all_filed">enter all filed</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="log_out">Log Out</string>
+    <string name="comment">Comment</string>
+    <string name="likes">likes</string>
+    <string name="choose_photo">Choose Photo</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="upload_from_gallery">Upload From Gallery</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_us">contact us</string>
+    <string name="add_news">Add News</string>
+    <string name="submit">Submit</string>
+    <string name="share">Share</string>
+    <string name="add_content">add content…</string>
+    <string name="message">message</string>
+    <string name="insert_your_comment">insert your comment...</string>
+    <string name="latest_news">Latest News</string>
+
 </resources>
